@@ -27,14 +27,6 @@ pipeline {
             }
         }
 
-        stage('Deploy to Staging'){
-        	steps {
-        		build job:'deploy-to-staging'
-        	}
-        }
-
-
-
         stage ('Deployments'){
             parallel{
                 stage ('Deploy to Staging'){
