@@ -31,13 +31,15 @@ pipeline {
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                        sh "scp -i /Users/Shared/Jenkins/Home/tomcat-demo.pem /Users/Shared/Jenkins/Home/workspace/FullyAutomated/webapp/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat8/webapps"
+                        // sh "scp -i /Users/Shared/Jenkins/Home/tomcat-demo.pem /Users/Shared/Jenkins/Home/workspace/FullyAutomated/webapp/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat8/webapps"
+                        sh "cp /Users/Shared/Jenkins/Home/workspace/FullyAutomated/webapp/target/*.war /Users/lako/apache-tomcat-9.0.13-staging/webapps"
                     }
                 }
 
                 stage ("Deploy to Production"){
                     steps {
-                        sh "scp -i /Users/Shared/Jenkins/Home/tomcat-demo.pem /Users/Shared/Jenkins/Home/workspace/FullyAutomated/webapp/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat8/webapps"
+                        // sh "scp -i /Users/Shared/Jenkins/Home/tomcat-demo.pem /Users/Shared/Jenkins/Home/workspace/FullyAutomated/webapp/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat8/webapps"
+                        sh "cp /Users/Shared/Jenkins/Home/workspace/FullyAutomated/webapp/target/*.war /Users/lako/apache-tomcat-9.0.13-prod/webapps"
                     }
                     
                 }
