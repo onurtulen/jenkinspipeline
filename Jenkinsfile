@@ -39,6 +39,7 @@ pipeline {
                     steps {
                         sh "scp -i /Users/Shared/Jenkins/Home/tomcat-demo.pem /Users/Shared/Jenkins/Home/workspace/FullyAutomated/webapp/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat8/webapps"
                     }
+                    
                 }
             }
         }
